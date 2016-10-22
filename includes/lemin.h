@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/10/22 10:32:33 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/10/22 10:47:42 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_lm
 **|	name: Name of the room;
 **|	x: X position of the room;
 **|	y: Y position of the room;
+**|	type: Type of the room, normal(0), start(1) or end(2);
 */
 
 typedef struct	s_room
@@ -45,6 +46,7 @@ typedef struct	s_room
 	char		*name;
 	int			x;
 	int			y;
+	char		type;
 }				t_room;
 
 t_lm			lm_get();
