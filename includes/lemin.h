@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/10/22 09:55:50 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/10/22 10:03:39 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ typedef struct	s_lm
 }				t_lm;
 
 t_lm			lm_get();
+void			lm_start(t_lm *lm);
 
 #endif
