@@ -6,7 +6,7 @@
 /*   By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:52:57 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/09/19 11:28:02 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/10/22 07:30:56 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,13 @@ void				ft_lstadd(t_list **lst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew_cpy(void const *content, size_t content_size);
+void				ft_lstpushb(t_list *lst,
+						void *content, size_t content_size);
 int					get_next_line(int fd, char **line);
 char				**str_array_new(void);
 int					str_array_count(char **array);
 char				**str_array_dup(char **array, int extra_row);
+void				str_array_cpy(char **dest, char **src);
 void				str_array_del(char ***addr);
 void				str_array_add(char ***array, char *str);
 void				str_array_sub(char ***array, char *str);

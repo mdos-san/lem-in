@@ -6,17 +6,17 @@
 #    By: mdos-san <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 12:59:09 by mdos-san          #+#    #+#              #
-#    Updated: 2016/10/22 10:38:30 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/10/17 15:13:28 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		libftprintf.a
+NAME =		libft.a
 
 COMPILER=	gcc
 FLAGS=		-Wall -Wextra -Werror -c
 INCLUDES=	-I ./includes
 
-TMP_C=		ft_memset.c		ft_bzero.c		ft_memcpy.c\
+SRC_C=		ft_memset.c		ft_bzero.c		ft_memcpy.c\
 			ft_memccpy.c	ft_memmove.c	ft_memchr.c\
 			ft_memcmp.c		ft_strlen.c		ft_strcpy.c\
 			ft_strncpy.c	ft_strcat.c		ft_strncat.c\
@@ -40,95 +40,38 @@ TMP_C=		ft_memset.c		ft_bzero.c		ft_memcpy.c\
 			str_array_new.c\
 			str_array_count.c\
 			str_array_dup.c\
+			str_array_cpy.c\
 			str_array_del.c\
 			str_array_add.c\
 			str_array_sub.c\
 			str_array_find.c\
 			ft_putnbrl.c
-SRC_C=$(TMP_C:%=libft/%)
+
 SRC_O=$(SRC_C:.c=.o)
-DEL_1=$(TMP_C:.c=.o)
-
-TMP_C_2 = \
-		  ft_printf.c\
-		  ftpf_init.c\
-		  ftpf_del.c\
-		  ft_putwchar.c\
-		  ft_putwstr.c\
-		  ft_putptn.c\
-		  ft_str_last_char.c\
-		  useless.c\
-		  print_c.c\
-		  print_lc.c\
-		  print_s.c\
-		  print_ls.c\
-		  print_hhd.c\
-		  print_hd.c\
-		  print_d.c\
-		  print_zd.c\
-		  print_zu.c\
-		  print_zo.c\
-		  print_zx.c\
-		  print_jd.c\
-		  print_ld.c\
-		  print_p.c\
-		  print_ho.c\
-		  print_hho.c\
-		  print_o.c\
-		  print_lo.c\
-		  print_hhu.c\
-		  print_hhx.c\
-		  print_hx.c\
-		  print_x.c\
-		  print_lx.c\
-		  print_jx.c\
-		  print_hu.c\
-		  print_huu.c\
-		  print_u.c\
-		  print_lu.c\
-		  print_jo.c\
-		  print_hud.c\
-		  print_ju.c\
-		  print_percent.c\
-		  print_width.c\
-		  init_pnt_fct.c
-SRC_C_2=$(TMP_C_2:%=srcs/%)
-SRC_O_2=$(SRC_C_2:.c=.o)
-DEL_2=$(TMP_C_2:.c=.o)
-
-.PHONY: all clean norm
 
 all: $(NAME)
 
-$(NAME): includes/libft.h $(DEL_1) $(DEL_2)
-	@echo "Creating libftprintf.a..."
-	@ar rc $(NAME) $(DEL_1) $(DEL_2)
+$(NAME): $(SRC_O)
+	@echo "Creating libft.a..."
+	@ar rc $(NAME) $(SRC_O)
 	@ranlib $(NAME)
 	@echo "Done !"
 
-includes/libft.h:
-	cp ./libft/includes/libft.h ./includes
-
-%.o: libft/%.c
-	@echo "Compiling $<"
-	@$(COMPILER) $(FLAGS) $(INCLUDES) $<
-
-%.o: srcs/%.c
+%.o: %.c
 	@echo "Compiling $<"
 	@$(COMPILER) $(FLAGS) $(INCLUDES) $<
 
 clean: 
 	@echo "Removing *.o"
-	@rm -rf $(DEL_1) $(DEL_2)
+	@rm -rf $(SRC_O)
 	@echo "Done"
 
 fclean: clean
-	@echo "Removing libftprintf.a"
-	@rm -rf libftprintf.a
-	@rm -rf includes/libft.h
+	@echo "Removing libft.a"
+	@rm -rf $(NAME)
 	@echo "Done"
 
 re: fclean all
 
 norm	:
-	@norminette srcs includes
+	@norminette *.c includes
