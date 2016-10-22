@@ -6,7 +6,7 @@
 #    By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/22 09:05:22 by mdos-san          #+#    #+#              #
-#    Updated: 2016/10/22 09:36:48 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/10/22 09:45:57 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ F		=	-Wall -Wextra -Werror
 I		=	-I./includes
 L		=	-L./libs libs/libftprintf.a
 
-S_C		=	main.c
+S_C		=	main.c\
+			lm_get.c
 
 S_O		=	$(S_C:%.c=%.o)
 
