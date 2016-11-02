@@ -37,12 +37,10 @@ static void	count(int *arr, int *tab, int pre)
 
 static int	*int_arr_dup(int *arr, int pre)
 {
-	int	i;
 	int	nbr;
 	int	to_go;
 	int	*tab;
 
-	i = 0;
 	nbr = 0;
 	to_go = 0;
 	while (arr[nbr])

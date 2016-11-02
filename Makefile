@@ -13,9 +13,9 @@
 NAME	=	lem-in
 
 CC		=	gcc
-F		=	-Wall -Wextra -Werror
+F		=	
 I		=	-I./includes
-L		=	-L./libs libs/libftprintf.a
+L		=	-L./libs -lftprintf
 
 S_C		=	main.c\
 			lm_get.c\
@@ -28,7 +28,7 @@ all:	$(NAME)
 $(NAME):	libs libs/libftprintf.a\
 			includes includes/libft.h includes/libftprintf.h\
 			$(S_O)
-	$(CC) -o $(NAME) $(F) $(I) $(L) $(S_O) 
+	$(CC) -o $(NAME) $(F) $(I) $(S_O) $(L)
 
 libs:
 	mkdir libs

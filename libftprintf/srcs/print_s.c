@@ -47,14 +47,12 @@ void		print_s(t_flag *flag, int *r)
 {
 	char	tmp;
 	char	*str;
-	int		nb;
 	char	*ss;
 
 	ss = va_arg(flag->arg, char *);
 	if (!check_null(flag, ss, r))
 	{
 		str = ft_strdup(ss);
-		nb = 0;
 		if (flag->precision > 0)
 		{
 			tmp = str[flag->precision];

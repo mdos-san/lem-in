@@ -61,12 +61,10 @@ static void	flag_space(t_flag *flag, char in, int *nb, int *r)
 void		print_hhd(t_flag *flag, int *r)
 {
 	char	*arr;
-	int		i;
 	int		nb;
 	int		n;
 	char	in;
 
-	i = 0;
 	in = (char)va_arg(flag->arg, int);
 	arr = ft_ltoa(in);
 	n = (arr[0] == '-') ? 1 : 0;

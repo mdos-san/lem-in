@@ -89,9 +89,7 @@ t_ftpf		*ftpf_init(char *input)
 {
 	t_ftpf	*new;
 	char	*str;
-	int		i;
 
-	i = -1;
 	new = (t_ftpf*)malloc(sizeof(t_ftpf));
 	if (!new)
 		return (NULL);

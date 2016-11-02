@@ -18,9 +18,9 @@
 /*
 **|	Description of struct s_lm
 **|
-**|	debug: Used to print debug info;
-**|	nb_ant: Number of ant given;
-**|	rooms: Linked list of all rooms, will containt *t_room as content;
+**|	debug:	Used to print debug info;
+**|	nb_ant:	Number of ant given;
+**|	rooms:	Linked list of all rooms, will containt *t_room as content;
 */
 
 typedef struct	s_lm
@@ -33,11 +33,11 @@ typedef struct	s_lm
 /*
 **| Description of struct s_room
 **|
-**|	input: Basic input given on stdin (form: "name x y")
-**|	name: Name of the room;
-**|	x: X position of the room;
-**|	y: Y position of the room;
-**|	type: Type of the room, normal(0), start(1) or end(2);
+**|	input:	Basic input given on stdin (form: "name x y")
+**|	name:	Name of the room;
+**|	x:		X position of the room;
+**|	y:		Y position of the room;
+**|	type:	Type of the room, normal(0), start(1) or end(2);
 */
 
 typedef struct	s_room

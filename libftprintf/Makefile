@@ -13,7 +13,7 @@
 NAME =		libftprintf.a
 
 COMPILER=	gcc
-FLAGS=		-Wall -Wextra -Werror -c
+FLAGS=		-c
 INCLUDES=	-I ./includes
 
 TMP_C=		ft_memset.c		ft_bzero.c		ft_memcpy.c\
