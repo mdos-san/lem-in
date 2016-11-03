@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/10/22 11:47:39 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/11/03 11:56:49 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_lm
 /*
 **| Description of struct s_room
 **|
-**|	input:	Basic input given on stdin (form: "name x y")
+**|	input:	Basic input given on stdin (ex: "name x y")
 **|	name:	Name of the room;
 **|	x:		X position of the room;
 **|	y:		Y position of the room;
@@ -51,5 +51,6 @@ typedef struct	s_room
 
 t_lm			lm_get();
 void			lm_start(t_lm *lm);
+char			*ft_strdup_to_char(char *str, char c);
 
 #endif

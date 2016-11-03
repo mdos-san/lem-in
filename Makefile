@@ -6,7 +6,7 @@
 #    By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/22 09:05:22 by mdos-san          #+#    #+#              #
-#    Updated: 2016/11/03 11:34:12 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/11/03 11:57:01 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ L		=	-L./libs -lftprintf
 
 S_C		=	main.c\
 			lm_get.c\
-			lm_start.c
+			lm_start.c\
+			ft_strdup_to_char.c
 
 S_O		=	$(S_C:%.c=%.o)
 
