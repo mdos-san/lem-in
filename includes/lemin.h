@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/11/03 11:56:49 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/11/03 12:07:32 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ typedef struct	s_lm
 **|	name:	Name of the room;
 **|	x:		X position of the room;
 **|	y:		Y position of the room;
+**|	id:		Unique id to identify room without difficulties;
 **|	type:	Type of the room, normal(0), start(1) or end(2);
+**|	link: 	Linked list of all connected room;
 */
 
 typedef struct	s_room
@@ -46,7 +48,9 @@ typedef struct	s_room
 	char		*name;
 	int			x;
 	int			y;
+	int			id;
 	char		type;
+	t_list		*link;
 }				t_room;
 
 t_lm			lm_get();

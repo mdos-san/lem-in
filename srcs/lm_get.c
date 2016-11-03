@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:43:00 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/11/03 11:59:26 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/11/03 12:16:42 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,14 @@ static int	good_format(char *str)
 
 static void	get_link(t_lm *lm, char *str)
 {
+	char	*r1;
+	char	*r2;
+
+	r1 = ft_strdup_to_char(str, '-');
+	r2 = ft_strdup(ft_strchr(str, '-') + 1);
+	ft_strdel(&r1);
+	ft_strdel(&r2);
 	(void)lm;
-	(void)str;
 }
 
 static void	get_room(t_lm *lm)
