@@ -32,6 +32,7 @@ typedef struct	s_lm
 	int			path_length;
 	t_list		*path_tmp;
 	int			tmp_length;
+	char		*input;
 }				t_lm;
 
 /*

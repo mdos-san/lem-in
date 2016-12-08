@@ -172,8 +172,9 @@ void	lm_start(t_lm *lm)
 {
 	t_list	*l;
 
-	l = get_start(lm->rooms);	
+	l = get_start(lm->rooms);
 	find_path(lm, l);
+	ft_putendl(lm->input);
 	(lm->debug) ? debug(lm) : 0;
 	print_solution(lm);
 }

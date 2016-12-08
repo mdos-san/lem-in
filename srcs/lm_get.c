@@ -97,6 +97,8 @@ static void	get_link(t_lm *lm, char *str)
 		ft_strdel(&r2);
 		while (get_next_line(0, &gnl_buf) > 0)
 		{
+			lm->input = ft_strjoin(lm->input, gnl_buf);
+			lm->input = ft_strjoin(lm->input, "\n");
 			r1 = ft_strdup_to_char(gnl_buf, '-');
 			r2 = ft_strdup(ft_strchr(gnl_buf, '-') + 1);
 			if (add_link(find_room(lm, r1), find_room(lm, r2)) == 0)
@@ -119,6 +121,8 @@ static void	get_room(t_lm *lm)
 	next_type = 0;
 	while (get_next_line(0, &array) > 0)
 	{
+		lm->input = ft_strjoin(lm->input, array);
+		lm->input = ft_strjoin(lm->input, "\n");
 		(ft_strcmp(array, "##start") == 0) ? (next_type = 1) : 0;
 		(ft_strcmp(array, "##end") == 0) ? (next_type = 2) : 0;
 		if (good_format(array))
@@ -126,6 +130,7 @@ static void	get_room(t_lm *lm)
 			r.input = ft_strdup(array);
 			r.name = ft_strdup_to_char(array, ' ');
 			r.type = next_type;
+			r.link = NULL;
 			(lm->rooms == NULL) ? (lm->rooms = ft_lstnew((void*)&r, sizeof(r)))
 				: ft_lstpushb(lm->rooms, (void*)&r, sizeof(r));
 			ft_strdel(&array);
@@ -148,6 +153,7 @@ t_lm		lm_get(void)
 	new.path_length = 0;
 	new.tmp_length = 0;
 	get_next_line(0, &array);
+	new.input = ft_strjoin(array, "\n");
 	new.nb_ant = ft_atoi(array);
 	get_room(&new);
 	if (new.debug)
