@@ -102,7 +102,6 @@ int		find_path(t_lm *lm, t_list *act)
 		}
 		else if (ret == 1 && (lm->path_length < lm->tmp_length || lm->tmp_length == 0))
 		{
-			ft_printf("FINDED : %d\n", lm->path_length);
 			lm->path_tmp = ft_lstdup(lm->path);
 			lm->tmp_length = lm->path_length;
 			return (0);
@@ -112,13 +111,69 @@ int		find_path(t_lm *lm, t_list *act)
 	return (0);
 }
 
+char	*get_room_of_path(t_list *l, int	nb)
+{
+	t_list	*c;
+	t_room	*r;
+	int		i;
+
+	i = 0;
+	c = l;
+	while (c)
+	{
+		if (i == nb)
+		{
+			r = (t_room*)c->content;
+			return (r->name);
+		}
+		++i;
+		c = c->next;
+	}
+	return (NULL);
+}
+
+int		ft_abs(int n)
+{
+	return ((n > 0) ? n : -1);
+}
+
+void	print_solution(t_lm *lm)
+{
+	int	i;
+	int	j;
+	int	c;
+	char	*str;
+
+	i = 1;
+	while (i <= lm->nb_ant + lm->tmp_length)
+	{
+		j = 1;
+		c = 0;
+		while (j < lm->tmp_length)
+		{
+			if (0 < i - j + 1 &&  i - j + 1 <= lm->nb_ant)
+			{
+				if (c > 0)
+					ft_printf(" ");
+				str = get_room_of_path(lm->path_tmp, j);
+				if (str)
+					ft_printf("L%d-%s", i - j + 1, str);
+				++c;
+			}
+			++j;
+		}
+		if (c > 0)
+			ft_putchar('\n');
+		++i;
+	}
+}
+
 void	lm_start(t_lm *lm)
 {
-	ft_printf("Entering lm_start\n");
 	t_list	*l;
 
 	l = get_start(lm->rooms);	
 	find_path(lm, l);
 	(lm->debug) ? debug(lm) : 0;
-	ft_printf("End lm_start\n");
+	print_solution(lm);
 }

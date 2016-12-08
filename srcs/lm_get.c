@@ -142,7 +142,7 @@ t_lm		lm_get(void)
 	t_lm	new;
 	char	*array;
 
-	new.debug = 1;
+	new.debug = 0;
 	new.path = NULL;
 	new.path_tmp = NULL;
 	new.path_length = 0;
