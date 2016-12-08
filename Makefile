@@ -20,6 +20,7 @@ L		=	-L./libs -lftprintf
 S_C		=	main.c\
 			lm_get.c\
 			lm_start.c\
+			ft_lstpushb_cpy.c\
 			ft_strdup_to_char.c
 
 S_O		=	$(S_C:%.c=%.o)

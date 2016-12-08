@@ -56,5 +56,6 @@ typedef struct	s_room
 t_lm			lm_get();
 void			lm_start(t_lm *lm);
 char			*ft_strdup_to_char(char *str, char c);
+void			ft_lstpushb_cpy(t_list *lst, void *content, size_t content_size);
 
 #endif
