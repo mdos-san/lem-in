@@ -143,6 +143,10 @@ t_lm		lm_get(void)
 	char	*array;
 
 	new.debug = 1;
+	new.path = NULL;
+	new.path_tmp = NULL;
+	new.path_length = 0;
+	new.tmp_length = 0;
 	get_next_line(0, &array);
 	new.nb_ant = ft_atoi(array);
 	get_room(&new);

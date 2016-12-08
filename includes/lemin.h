@@ -28,6 +28,10 @@ typedef struct	s_lm
 	char		debug;
 	int			nb_ant;
 	t_list		*rooms;
+	t_list		*path;
+	int			path_length;
+	t_list		*path_tmp;
+	int			tmp_length;
 }				t_lm;
 
 /*
@@ -57,5 +61,7 @@ t_lm			lm_get();
 void			lm_start(t_lm *lm);
 char			*ft_strdup_to_char(char *str, char c);
 void			ft_lstpushb_cpy(t_list *lst, void *content, size_t content_size);
+void			ft_lstdetach_last(t_list *l);
+int				ft_lstcount(t_list *l);
 
 #endif

@@ -12,7 +12,113 @@
 
 #include "lemin.h"
 
+static void		debug(t_lm *lm)
+{
+	t_list	*l;
+	t_room	*r;
+
+	l = lm->path_tmp;
+	while (l)
+	{
+		r = (t_room*)l->content;
+		ft_printf("path : %s\n", r->name);
+		l = l->next;
+	}
+
+}
+
+static t_list	*get_start(t_list *rooms)
+{
+	t_list	*c;
+	t_room	*r;
+
+	c = rooms;
+	while (c)
+	{
+		r = (t_room*)c->content;
+		if (r->type == 1)
+			return (c);
+		c = c->next;
+	}
+	return (NULL);
+}
+
+static int	elem_exist(t_list *l, char *str)
+{
+	t_list	*c;
+	t_room	*r;
+	int		i;
+
+	c = l;
+	i = 0;
+	while (c)
+	{
+		r = (t_room*)c->content;
+		if (ft_strcmp(r->name, str) == 0)
+			++i;
+		if (i == 2)
+			return (1);
+		c = c->next;
+	}
+	return (0);
+}
+
+t_list	*ft_lstdup(t_list *l)
+{
+	t_list	*ret;
+
+	ret = NULL;
+	while (l)
+	{
+		(ret) ? ft_lstpushb(ret, l->content, l->content_size)
+			: (ret = ft_lstnew(l->content, l->content_size)) ;
+		l = l->next;
+	}
+	return (ret);
+}
+
+int		find_path(t_lm *lm, t_list *act)
+{
+	t_room	*r_a;
+	t_list	*l;
+	int		ret;
+
+	r_a = (t_room*)act->content;
+	l = r_a->link;
+	(lm->path) ? ft_lstpushb(lm->path, r_a, sizeof(t_room))
+		: (lm->path = ft_lstnew(r_a, sizeof(t_room)));
+	++lm->path_length;
+	if (r_a->type == 2)
+		return (1);
+	if (elem_exist(lm->path, r_a->name))
+		return (0);
+	while (l)
+	{
+		ret = find_path(lm, l);
+		if (ret == 0)
+		{
+			ft_lstdetach_last(lm->path);
+			--lm->path_length;
+		}
+		else if (ret == 1 && (lm->path_length < lm->tmp_length || lm->tmp_length == 0))
+		{
+			ft_printf("FINDED : %d\n", lm->path_length);
+			lm->path_tmp = ft_lstdup(lm->path);
+			lm->tmp_length = lm->path_length;
+			return (0);
+		}
+		l = l->next;
+	}
+	return (0);
+}
+
 void	lm_start(t_lm *lm)
 {
-	(void)lm;
+	ft_printf("Entering lm_start\n");
+	t_list	*l;
+
+	l = get_start(lm->rooms);	
+	find_path(lm, l);
+	(lm->debug) ? debug(lm) : 0;
+	ft_printf("End lm_start\n");
 }
