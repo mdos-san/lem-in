@@ -13,7 +13,7 @@
 NAME	=	lem-in
 
 CC		=	gcc
-F		=	-g3 -fsanitize=address -Werror -Wall -Wextra
+F		=	-Werror -Wall -Wextra
 I		=	-I./includes
 L		=	-L./libs -lftprintf
 
