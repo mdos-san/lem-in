@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:57:42 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/10/22 10:56:04 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/12/09 12:51:18 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void		debug(t_lm *lm)
 		ft_printf("path : %s\n", r->name);
 		l = l->next;
 	}
-
 }
 
 static t_list	*get_start(t_list *rooms)
@@ -43,7 +42,7 @@ static t_list	*get_start(t_list *rooms)
 	return (NULL);
 }
 
-static int	elem_exist(t_list *l, char *str)
+static int		elem_exist(t_list *l, char *str)
 {
 	t_list	*c;
 	t_room	*r;
@@ -63,7 +62,7 @@ static int	elem_exist(t_list *l, char *str)
 	return (0);
 }
 
-t_list	*ft_lstdup(t_list *l)
+t_list			*ft_lstdup(t_list *l)
 {
 	t_list	*ret;
 
@@ -71,13 +70,13 @@ t_list	*ft_lstdup(t_list *l)
 	while (l)
 	{
 		(ret) ? ft_lstpushb(ret, l->content, l->content_size)
-			: (ret = ft_lstnew(l->content, l->content_size)) ;
+			: (ret = ft_lstnew(l->content, l->content_size));
 		l = l->next;
 	}
 	return (ret);
 }
 
-int		find_path(t_lm *lm, t_list *act)
+int				find_path(t_lm *lm, t_list *act)
 {
 	t_room	*r_a;
 	t_list	*l;
@@ -100,7 +99,8 @@ int		find_path(t_lm *lm, t_list *act)
 			ft_lstdetach_last(lm->path);
 			--lm->path_length;
 		}
-		else if (ret == 1 && (lm->path_length < lm->tmp_length || lm->tmp_length == 0))
+		else if (ret == 1 &&
+			(lm->path_length < lm->tmp_length || lm->tmp_length == 0))
 		{
 			lm->path_tmp = ft_lstdup(lm->path);
 			lm->tmp_length = lm->path_length;
@@ -111,7 +111,7 @@ int		find_path(t_lm *lm, t_list *act)
 	return (0);
 }
 
-char	*get_room_of_path(t_list *l, int	nb)
+char			*get_room_of_path(t_list *l, int nb)
 {
 	t_list	*c;
 	t_room	*r;
@@ -132,16 +132,16 @@ char	*get_room_of_path(t_list *l, int	nb)
 	return (NULL);
 }
 
-int		ft_abs(int n)
+int				ft_abs(int n)
 {
 	return ((n > 0) ? n : -1);
 }
 
-void	print_solution(t_lm *lm)
+void			print_solution(t_lm *lm)
 {
-	int	i;
-	int	j;
-	int	c;
+	int		i;
+	int		j;
+	int		c;
 	char	*str;
 
 	i = 1;
@@ -151,7 +151,7 @@ void	print_solution(t_lm *lm)
 		c = 0;
 		while (j < lm->tmp_length)
 		{
-			if (0 < i - j + 1 &&  i - j + 1 <= lm->nb_ant)
+			if (0 < i - j + 1 && i - j + 1 <= lm->nb_ant)
 			{
 				if (c > 0)
 					ft_printf(" ");
@@ -168,7 +168,7 @@ void	print_solution(t_lm *lm)
 	}
 }
 
-void	lm_start(t_lm *lm)
+void			lm_start(t_lm *lm)
 {
 	t_list	*l;
 

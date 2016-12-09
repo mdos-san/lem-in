@@ -6,13 +6,13 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:43:00 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/11/03 12:16:42 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/12/09 12:45:09 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static void	debug(t_lm *lm)
+static void		debug(t_lm *lm)
 {
 	t_list	*l;
 	t_room	r;
@@ -38,7 +38,7 @@ static void	debug(t_lm *lm)
 	}
 }
 
-static int	good_format(char *str)
+static int		good_format(char *str)
 {
 	int	i;
 	int	count;
@@ -73,16 +73,18 @@ static t_room	*find_room(t_lm *lm, char *name)
 	return (NULL);
 }
 
-static int	add_link(t_room *r1, t_room *r2)
+static int		add_link(t_room *r1, t_room *r2)
 {
 	if (!r1 || !r2)
 		return (0);
-	(r1->link) ? ft_lstpushb_cpy(r1->link, r2, sizeof(r2)) : (r1->link = ft_lstnew_cpy(r2, sizeof(r2)));
-	(r2->link) ? ft_lstpushb_cpy(r2->link, r1, sizeof(r1)) : (r2->link = ft_lstnew_cpy(r1, sizeof(r1)));
+	(r1->link) ? ft_lstpushb_cpy(r1->link, r2, sizeof(r2))
+		: (r1->link = ft_lstnew_cpy(r2, sizeof(r2)));
+	(r2->link) ? ft_lstpushb_cpy(r2->link, r1, sizeof(r1))
+		: (r2->link = ft_lstnew_cpy(r1, sizeof(r1)));
 	return (1);
 }
 
-static void	get_link(t_lm *lm, char *str)
+static void		get_link(t_lm *lm, char *str)
 {
 	char	*gnl_buf;
 	char	*r1;
@@ -110,7 +112,7 @@ static void	get_link(t_lm *lm, char *str)
 	}
 }
 
-static void	get_room(t_lm *lm)
+static void		get_room(t_lm *lm)
 {
 	char	*array;
 	t_room	r;
@@ -142,7 +144,7 @@ static void	get_room(t_lm *lm)
 	get_link(lm, array);
 }
 
-t_lm		lm_get(void)
+t_lm			lm_get(void)
 {
 	t_lm	new;
 	char	*array;
