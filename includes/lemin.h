@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/12/09 12:39:55 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/12/09 20:12:16 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct	s_room
 	int			id;
 	char		type;
 	t_list		*link;
+	int			w;
+	int			p;
 }				t_room;
 
 t_lm			lm_get();
@@ -65,5 +67,6 @@ void			ft_lstpushb_cpy(t_list *lst, void *content,
 					size_t content_size);
 void			ft_lstdetach_last(t_list *l);
 int				ft_lstcount(t_list *l);
+void			bfs(t_room *act, int depth);
 
 #endif

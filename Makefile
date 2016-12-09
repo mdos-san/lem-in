@@ -6,14 +6,14 @@
 #    By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/22 09:05:22 by mdos-san          #+#    #+#              #
-#    Updated: 2016/12/09 13:17:43 by mdos-san         ###   ########.fr        #
+#    Updated: 2016/12/09 19:04:44 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	lem-in
 
 CC		=	gcc
-F		=	-Werror -Wall -Wextra
+F		=	-g3 -fsanitize=address -Werror -Wall -Wextra
 I		=	-I./includes
 L		=	-L./libs -lftprintf
 
@@ -23,7 +23,8 @@ S_C		=	main.c\
 			ft_lstpushb_cpy.c\
 			ft_lstdetach_last.c\
 			ft_lstcount.c\
-			ft_strdup_to_char.c
+			ft_strdup_to_char.c\
+			bfs.c
 
 S_O		=	$(S_C:%.c=%.o)
 

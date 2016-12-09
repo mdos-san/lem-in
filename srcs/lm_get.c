@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:43:00 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/12/09 12:45:09 by mdos-san         ###   ########.fr       */
+/*   Updated: 2016/12/09 20:28:45 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		debug(t_lm *lm)
 {
 	t_list	*l;
-	t_room	r;
+	t_room	*r;
 	t_list	*l2;
 
 	l = lm->rooms;
@@ -23,15 +23,17 @@ static void		debug(t_lm *lm)
 	ft_printf("nb_ant: %d\n", lm->nb_ant);
 	while (l)
 	{
-		r = *(t_room*)(l->content);
-		ft_printf("|room: %s\n", (r.input));
-		ft_printf("-----name: %s\n", (r.name));
-		ft_printf("-----type: %d\n", (r.type));
-		l2 = r.link;
+		r = (t_room*)(l->content);
+		ft_printf("|room: %s\n", (r->input));
+		ft_printf("-----name: %s\n", (r->name));
+		ft_printf("-----type: %d\n", (r->type));
+		ft_printf("-----weig: %d\n", (r->w));
+		ft_printf("-----path: %d\n", (r->p));
+		l2 = r->link;
 		while (l2)
 		{
-			r = *(t_room*)(l2->content);
-			ft_printf("Linked_to: %s\n", (r.name));
+			r = *(t_room**)(l2->content);
+			ft_printf("Linked_to: %s\n", (r->name));
 			l2 = l2->next;
 		}
 		l = l->next;
@@ -77,10 +79,10 @@ static int		add_link(t_room *r1, t_room *r2)
 {
 	if (!r1 || !r2)
 		return (0);
-	(r1->link) ? ft_lstpushb_cpy(r1->link, r2, sizeof(r2))
-		: (r1->link = ft_lstnew_cpy(r2, sizeof(r2)));
-	(r2->link) ? ft_lstpushb_cpy(r2->link, r1, sizeof(r1))
-		: (r2->link = ft_lstnew_cpy(r1, sizeof(r1)));
+	(r1->link) ? ft_lstpushb(r1->link, &r2, sizeof(t_room*))
+		: (r1->link = ft_lstnew(&r2, sizeof(t_room*)));
+	(r2->link) ? ft_lstpushb(r2->link, &r1, sizeof(t_room*))
+		: (r2->link = ft_lstnew(&r1, sizeof(t_room*)));
 	return (1);
 }
 
@@ -93,6 +95,7 @@ static void		get_link(t_lm *lm, char *str)
 	gnl_buf = NULL;
 	r1 = ft_strdup_to_char(str, '-');
 	r2 = ft_strdup(ft_strchr(str, '-') + 1);
+	ft_printf("l1 %s l2 %s \n", r1, r2);
 	if (add_link(find_room(lm, r1), find_room(lm, r2)) == 1)
 	{
 		ft_strdel(&r1);
@@ -103,8 +106,9 @@ static void		get_link(t_lm *lm, char *str)
 			lm->input = ft_strjoin(lm->input, "\n");
 			r1 = ft_strdup_to_char(gnl_buf, '-');
 			r2 = ft_strdup(ft_strchr(gnl_buf, '-') + 1);
+	ft_printf("l1 %s l2 %s \n", r1, r2);
 			if (add_link(find_room(lm, r1), find_room(lm, r2)) == 0)
-				break ;
+				exit(0);
 			ft_strdel(&gnl_buf);
 			ft_strdel(&r1);
 			ft_strdel(&r2);
@@ -115,12 +119,13 @@ static void		get_link(t_lm *lm, char *str)
 static void		get_room(t_lm *lm)
 {
 	char	*array;
-	t_room	r;
+	t_room	*r;
 	char	next_type;
 
 	array = NULL;
 	lm->rooms = NULL;
 	next_type = 0;
+	r = (t_room *)malloc(sizeof(t_room));
 	while (get_next_line(0, &array) > 0)
 	{
 		lm->input = ft_strjoin(lm->input, array);
@@ -129,12 +134,14 @@ static void		get_room(t_lm *lm)
 		(ft_strcmp(array, "##end") == 0) ? (next_type = 2) : 0;
 		if (good_format(array))
 		{
-			r.input = ft_strdup(array);
-			r.name = ft_strdup_to_char(array, ' ');
-			r.type = next_type;
-			r.link = NULL;
-			(lm->rooms == NULL) ? (lm->rooms = ft_lstnew((void*)&r, sizeof(r)))
-				: ft_lstpushb(lm->rooms, (void*)&r, sizeof(r));
+			r->input = ft_strdup(array);
+			r->name = ft_strdup_to_char(array, ' ');
+			r->type = next_type;
+			r->w = -1;
+			r->p = -1;
+			r->link = NULL;
+			(lm->rooms == NULL) ? (lm->rooms = ft_lstnew(r, sizeof(t_room)))
+				: ft_lstpushb(lm->rooms, r, sizeof(t_room));
 			ft_strdel(&array);
 			next_type = 0;
 		}
@@ -149,7 +156,7 @@ t_lm			lm_get(void)
 	t_lm	new;
 	char	*array;
 
-	new.debug = 0;
+	new.debug = 1;
 	new.path = NULL;
 	new.path_tmp = NULL;
 	new.path_length = 0;
