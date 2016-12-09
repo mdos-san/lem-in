@@ -6,6 +6,7 @@ int	ft_lstcount(t_list *l)
 	int		i;
 
 	c = l;
+	i = 0;
 	while (c)
 	{
 		++i;
