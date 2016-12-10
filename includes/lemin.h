@@ -33,6 +33,7 @@ typedef struct	s_lm
 	t_list		*path_tmp;
 	int			tmp_length;
 	char		*input;
+	int			nb_path;
 }				t_lm;
 
 /*
@@ -68,5 +69,6 @@ void			ft_lstpushb_cpy(t_list *lst, void *content,
 void			ft_lstdetach_last(t_list *l);
 int				ft_lstcount(t_list *l);
 void			bfs(t_room *act, int depth);
+int				count_path(t_list *st_l);
 
 #endif

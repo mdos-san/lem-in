@@ -205,6 +205,9 @@ void			lm_start(t_lm *lm)
 	l = get_end(lm->rooms);
 	bfs((t_room *)l->content, 0);
 	debug(lm);
+	l = get_start(lm->rooms);
+	lm->nb_path = count_path(((t_room*)l->content)->link);
+	ft_printf("%d path(s) finded !", lm->nb_path);
 	exit(0);
 
 	l = get_start(lm->rooms);

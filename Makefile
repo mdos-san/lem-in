@@ -24,6 +24,7 @@ S_C		=	main.c\
 			ft_lstdetach_last.c\
 			ft_lstcount.c\
 			ft_strdup_to_char.c\
+			count_path.c\
 			bfs.c
 
 S_O		=	$(S_C:%.c=%.o)
