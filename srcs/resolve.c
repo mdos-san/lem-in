@@ -1,50 +1,72 @@
 #include "lemin.h"
 
-char	*get_path_room(t_list *lst, int d, int p)
+static char			*get_room_of_path(t_room *ro, int p, int nb, int *end)
 {
 	t_list	*c;
 	t_room	*r;
+	int		i;
 
-	c = lst;
+	i = 0;
+	c = ro->link;
+	if (nb == 0 || ro->type == 2)
+	{
+		if (ro->type == 2)
+			++*end;
+		return (ro->name);
+	}
 	while (c)
 	{
-		r = (t_room*)c->content;
-		//ft_printf("\nr %d %s", r->p, r->name);
-		if (r->p == p)
+		r = *(t_room**)c->content;
+		if (((ro->w > r->w || ro->w == -1) && r->p == p) || r->type == 2)
 		{
-			if (d == 0)
-				return (r->name);
-			else
-				return (get_path_room(c, d - 1, p));
+			return (get_room_of_path(r, p, nb - 1, end));
 		}
+		++i;
 		c = c->next;
 	}
 	return (NULL);
 }
 
-void	resolve(t_lm *lm)
+
+void			resolve(t_lm *lm)
 {
 	int		i;
 	int		j;
-	char	*name;
-	int		nb;
+	char	*str;
+	int		lem;
+	int		turn;
+	int		depth;
+	int		path;
+	int		end;
+	int		nend;
 
 	i = 1;
-	nb = lm->nb_path;
-	while (i <= lm->nb_ant + 1)
+	turn = 0;
+	end = 0;
+	nend = 0;
+	while (end < lm->nb_ant)
 	{
 		j = 1;
-		while (j <= lm->nb_path)
+		++turn;
+		while (j <= lm->nb_ant + 1)
 		{
-//			ft_printf("i - j + 1 = %d ||| lm->nb_path %d\n", i - j + 1, lm->nb_path);
-//			ft_printf("j = %d ||| (i + j) %% nb + 1 = %d\n", j, (i + j) % nb + 1);
-			ft_printf("\nActual depth: %d\n", (i + j) % nb + 1);
-			name = get_path_room(lm->start_link, j, (i + j) % nb + 1);
-			if (name && i - j + nb <= lm->nb_ant)
-				ft_printf("L%d-%s ", i - j + nb, name);
+			lem = i - j + lm->nb_path;
+			if (end < lem && lem <= lm->nb_ant)
+			{
+				path = (lem % lm->nb_path) + 1;
+				depth = j / (lm->nb_path) + 1;
+				if (lem % lm->nb_path == 1)
+					--depth;
+				else if (lm->nb_path == 1)
+					--depth;
+				str = get_room_of_path(lm->start, path, depth, &nend);
+				if (str)
+					ft_printf("L%d-%s ", lem, str);
+			}
 			++j;
 		}
-		ft_printf("\n", i - j + 1, name);
-		++i;
+		end = nend;
+		ft_putchar('\n');
+		i += lm->nb_path;
 	}
 }

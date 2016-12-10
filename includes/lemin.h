@@ -16,28 +16,6 @@
 # include "libftprintf.h"
 
 /*
-**|	Description of struct s_lm
-**|
-**|	debug:	Used to print debug info;
-**|	nb_ant:	Number of ant given;
-**|	rooms:	Linked list of all rooms, will containt *t_room as content;
-*/
-
-typedef struct	s_lm
-{
-	char		debug;
-	int			nb_ant;
-	t_list		*rooms;
-	t_list		*path;
-	int			path_length;
-	t_list		*path_tmp;
-	int			tmp_length;
-	char		*input;
-	int			nb_path;
-	t_list		*start_link;
-}				t_lm;
-
-/*
 **| Description of struct s_room
 **|
 **|	input:	Basic input given on stdin (ex: "name x y")
@@ -61,6 +39,28 @@ typedef struct	s_room
 	int			w;
 	int			p;
 }				t_room;
+
+/*
+**|	Description of struct s_lm
+**|
+**|	debug:	Used to print debug info;
+**|	nb_ant:	Number of ant given;
+**|	rooms:	Linked list of all rooms, will containt *t_room as content;
+*/
+
+typedef struct	s_lm
+{
+	char		debug;
+	int			nb_ant;
+	t_list		*rooms;
+	t_list		*path;
+	int			path_length;
+	t_list		*path_tmp;
+	int			tmp_length;
+	char		*input;
+	int			nb_path;
+	t_room		*start;
+}				t_lm;
 
 t_lm			lm_get();
 void			lm_start(t_lm *lm);
