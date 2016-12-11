@@ -62,6 +62,7 @@ typedef struct	s_lm
 	t_room		*start;
 	int			s_given;
 	int			e_given;
+	t_room		*r_end;
 }				t_lm;
 
 t_lm			lm_get();
@@ -71,8 +72,7 @@ void			ft_lstpushb_cpy(t_list *lst, void *content,
 					size_t content_size);
 void			ft_lstdetach_last(t_list *l);
 int				ft_lstcount(t_list *l);
-void			bfs(t_room *act, int depth);
-int				count_path(t_list *st_l);
+int				path_init(t_lm *lm);
 void			resolve(t_lm *lm);
 
 #endif

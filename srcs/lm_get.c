@@ -95,12 +95,14 @@ static void		get_link(t_lm *lm, char *str)
 	gnl_buf = NULL;
 	r1 = ft_strdup_to_char(str, '-');
 	r2 = ft_strdup(((ft_strchr(str, '-')) ? ft_strchr(str, '-') + 1 : NULL));
-	if (add_link(find_room(lm, r1), find_room(lm, r2)) == 1)
+	if (add_link(find_room(lm, r1), find_room(lm, r2)) == 1 || str[0] == '#')
 	{
 		ft_strdel(&r1);
 		ft_strdel(&r2);
 		while (get_next_line(0, &gnl_buf) > 0)
 		{
+			if (gnl_buf[0] != '#')
+			{
 			lm->input = ft_strjoin(lm->input, gnl_buf);
 			lm->input = ft_strjoin(lm->input, "\n");
 			r1 = ft_strdup_to_char(gnl_buf, '-');
@@ -113,6 +115,7 @@ static void		get_link(t_lm *lm, char *str)
 			ft_strdel(&gnl_buf);
 			ft_strdel(&r1);
 			ft_strdel(&r2);
+			}
 		}
 	}
 	else

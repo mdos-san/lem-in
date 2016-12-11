@@ -204,18 +204,18 @@ void			lm_start(t_lm *lm)
 	t_list	*l;
 
 	l = get_end(lm->rooms);
-	bfs((t_room *)l->content, 0);
-	((t_room*)l->content)->p = 1;
-	((t_room*)l->content)->w = -1;
-	l = get_start(lm->rooms);
-	lm->start = (t_room*)l->content;
-	lm->nb_path = count_path(((t_room*)l->content)->link);
+	lm->r_end = (t_room*)l->content;
+	lm->nb_path = path_init(lm);
 	if (lm->nb_path == 0)
 	{
 		ft_printf("ERROR\n");
 		exit(0);
 	}
 	(lm->debug) ? debug(lm) : 0;
+	lm->r_end->p = 1;
+	lm->r_end->w = -1;
+	l = get_start(lm->rooms);
+	lm->start = (t_room*)l->content;
 	ft_putendl(lm->input);
 	resolve(lm);
 	exit(0);
