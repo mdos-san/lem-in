@@ -204,7 +204,7 @@ void			lm_start(t_lm *lm)
 
 	l = get_end(lm->rooms);
 	bfs((t_room *)l->content, 0);
-	((t_room*)l->content)->p = -1;
+	((t_room*)l->content)->p = 1;
 	((t_room*)l->content)->w = -1;
 	debug(lm);
 	l = get_start(lm->rooms);
