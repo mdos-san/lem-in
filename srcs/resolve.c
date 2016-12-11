@@ -8,10 +8,10 @@ static char			*get_room_of_path(t_room *ro, int p, int nb, int *end)
 
 	i = 0;
 	c = ro->link;
+	if (ro->type == 2)
+			++*end;
 	if (nb == 0 || ro->type == 2)
 	{
-		if (ro->type == 2)
-			++*end;
 		return (ro->name);
 	}
 	while (c)
@@ -48,7 +48,8 @@ void			resolve(t_lm *lm)
 	{
 		j = 1;
 		++turn;
-		while (j <= lm->nb_ant + 1)
+		lem = i - j + lm->nb_path;
+		while (lem > 0)
 		{
 			lem = i - j + lm->nb_path;
 			if (end < lem && lem <= lm->nb_ant)
