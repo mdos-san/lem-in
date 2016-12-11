@@ -38,6 +38,7 @@ static void		debug(t_lm *lm)
 		}
 		l = l->next;
 	}
+	ft_printf("%d path(s) finded !\n", lm->nb_path);
 }
 
 static t_list	*get_end(t_list *rooms)
@@ -206,11 +207,15 @@ void			lm_start(t_lm *lm)
 	bfs((t_room *)l->content, 0);
 	((t_room*)l->content)->p = 1;
 	((t_room*)l->content)->w = -1;
-	debug(lm);
 	l = get_start(lm->rooms);
 	lm->start = (t_room*)l->content;
 	lm->nb_path = count_path(((t_room*)l->content)->link);
-	ft_printf("%d path(s) finded !\n", lm->nb_path);
+	if (lm->nb_path == 0)
+	{
+		ft_printf("ERROR\n");
+		exit(0);
+	}
+	(lm->debug) ? debug(lm) : 0;
 	ft_putendl(lm->input);
 	resolve(lm);
 	exit(0);
@@ -224,5 +229,4 @@ void			lm_start(t_lm *lm)
 		ft_putendl(lm->input);
 		print_solution(lm);
 	}
-	(lm->debug) ? debug(lm) : 0;
 }

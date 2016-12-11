@@ -22,17 +22,13 @@ void	bfs(t_room *act, int depth)
 	init = 0;
 	act->w = depth;
 	l = act->link;
-	ft_printf("now on room %s of the path %d with w %d \n", act->name, act->p, act->w);
 	while (l)
 	{
 		r = *(t_room**)l->content;
 		if (!reach_start)
 		{
 			if (r->type != 1 && r->p == -1)
-			{
 				r->p = (act->type == 2) ? ++init : act->p;
-				ft_printf("\troom %s assigned to path %d\n", r->name, r->p);
-			}
 		}
 		l = l->next;
 	}
@@ -43,12 +39,7 @@ void	bfs(t_room *act, int depth)
 		if (reach_start)
 		{
 			if (r->w == -1 && r->p == act->p)
-			{
 				r->p = -1;
-				ft_printf("Set room %s path to -1\n", r->name);
-			}
-			else
-				ft_printf("Doing nothing on room %s w %d\n", r->name, r->w);
 		}
 		if (!reach_start)
 		{

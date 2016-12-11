@@ -60,6 +60,8 @@ typedef struct	s_lm
 	char		*input;
 	int			nb_path;
 	t_room		*start;
+	int			s_given;
+	int			e_given;
 }				t_lm;
 
 t_lm			lm_get();

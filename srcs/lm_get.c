@@ -94,8 +94,7 @@ static void		get_link(t_lm *lm, char *str)
 
 	gnl_buf = NULL;
 	r1 = ft_strdup_to_char(str, '-');
-	r2 = ft_strdup(ft_strchr(str, '-') + 1);
-	ft_printf("l1 %s l2 %s \n", r1, r2);
+	r2 = ft_strdup(((ft_strchr(str, '-')) ? ft_strchr(str, '-') + 1 : NULL));
 	if (add_link(find_room(lm, r1), find_room(lm, r2)) == 1)
 	{
 		ft_strdel(&r1);
@@ -106,13 +105,20 @@ static void		get_link(t_lm *lm, char *str)
 			lm->input = ft_strjoin(lm->input, "\n");
 			r1 = ft_strdup_to_char(gnl_buf, '-');
 			r2 = ft_strdup(ft_strchr(gnl_buf, '-') + 1);
-	ft_printf("l1 %s l2 %s \n", r1, r2);
 			if (add_link(find_room(lm, r1), find_room(lm, r2)) == 0)
+			{
+				ft_printf("ERROR\n");
 				exit(0);
+			}
 			ft_strdel(&gnl_buf);
 			ft_strdel(&r1);
 			ft_strdel(&r2);
 		}
+	}
+	else
+	{
+		ft_printf("ERROR\n");
+		exit(0);
 	}
 }
 
@@ -132,6 +138,13 @@ static void		get_room(t_lm *lm)
 		lm->input = ft_strjoin(lm->input, "\n");
 		(ft_strcmp(array, "##start") == 0) ? (next_type = 1) : 0;
 		(ft_strcmp(array, "##end") == 0) ? (next_type = 2) : 0;
+		if ((lm->s_given > 1 || lm->e_given > 1))
+		{
+			ft_printf("ERROR");
+			exit(0);
+		}
+		(ft_strcmp(array, "##start") == 0) ? (++lm->s_given) : 0;
+		(ft_strcmp(array, "##end") == 0) ? (++lm->e_given) : 0;
 		if (good_format(array))
 		{
 			r->input = ft_strdup(array);
@@ -156,14 +169,21 @@ t_lm			lm_get(void)
 	t_lm	new;
 	char	*array;
 
-	new.debug = 1;
+	new.debug = 0;
 	new.path = NULL;
 	new.path_tmp = NULL;
 	new.path_length = 0;
 	new.tmp_length = 0;
+	new.s_given = 0;
+	new.e_given = 0;
 	get_next_line(0, &array);
 	new.input = ft_strjoin(array, "\n");
 	new.nb_ant = ft_atoi(array);
+	if (new.nb_ant <= 0)
+	{
+		ft_printf("ERROR");
+		exit(0);
+	}
 	get_room(&new);
 	if (new.debug)
 		debug(&new);
