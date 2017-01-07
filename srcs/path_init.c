@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 17:54:31 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/07 17:55:26 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/07 18:02:10 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,8 @@ static int	bfs(t_room *r, int path, int depth, int debug)
 	t_list	*l;
 	t_room	*next;
 
-	if (debug)
-		ft_printf("BFS: Actualy on %s\n", r->name);
 	if (r->type == 1)
-	{
-		ft_printf("PATH FINDED\n");
 		return ((r->type == 1) ? 1 : 0);
-	}
 	l = r->link;
 	r->w = depth;
 	r->p = path;
@@ -53,8 +48,6 @@ static int	bfs(t_room *r, int path, int depth, int debug)
 		}
 		l = l->next;
 	}
-	if (debug)
-		ft_printf("BFS: LEAVING %s\n", r->name);
 	r->w = -1;
 	r->p = -1;
 	return (0);
@@ -74,7 +67,5 @@ int			path_init(t_lm *lm)
 			++path;
 		l = l->next;
 	}
-	if (lm->debug)
-		ft_printf("PATH_INIT: %d path(s) finded with bfs !\n", path);
 	return (path);
 }
