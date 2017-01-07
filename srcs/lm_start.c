@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:57:42 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/12/09 20:29:08 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/07 17:54:08 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,14 +219,4 @@ void			lm_start(t_lm *lm)
 	ft_putendl(lm->input);
 	resolve(lm);
 	exit(0);
-
-	l = get_start(lm->rooms);
-	find_path(lm, l);
-	if (lm->path_length == 0)
-		ft_printf("ERROR");
-	else
-	{
-		ft_putendl(lm->input);
-		print_solution(lm);
-	}
 }

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   resolve.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/07 17:54:46 by mdos-san          #+#    #+#             */
+/*   Updated: 2017/01/07 17:57:07 by mdos-san         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-static char			*get_room_of_path(t_room *ro, int p, int nb, int *end)
+static char	*get_room_of_path(t_room *ro, int p, int nb, int *end)
 {
 	t_list	*c;
 	t_room	*r;
@@ -9,7 +21,7 @@ static char			*get_room_of_path(t_room *ro, int p, int nb, int *end)
 	i = 0;
 	c = ro->link;
 	if (ro->type == 2)
-			++*end;
+		++*end;
 	if (nb == 0 || ro->type == 2)
 	{
 		return (ro->name);
@@ -27,8 +39,7 @@ static char			*get_room_of_path(t_room *ro, int p, int nb, int *end)
 	return (NULL);
 }
 
-
-void			resolve(t_lm *lm)
+void		resolve(t_lm *lm)
 {
 	int		i;
 	int		j;

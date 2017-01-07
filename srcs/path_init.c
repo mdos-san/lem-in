@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   path_init.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/07 17:54:31 by mdos-san          #+#    #+#             */
+/*   Updated: 2017/01/07 17:55:26 by mdos-san         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 static void	set_link_depth(t_list *link, int act_d, int depth)
@@ -48,7 +60,7 @@ static int	bfs(t_room *r, int path, int depth, int debug)
 	return (0);
 }
 
-int	path_init(t_lm *lm)
+int			path_init(t_lm *lm)
 {
 	int		path;
 	t_list	*l;
