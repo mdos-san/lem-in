@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/20 14:46:27 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/20 14:53:37 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void			lm_start(t_lm *lm);
 char			*ft_strdup_to_char(char *str, char c);
 void			ft_lstpushb_cpy(t_list *lst, void *content,
 					size_t content_size);
-void			ft_lstdetach_last(t_list *l);
 int				ft_lstcount(t_list *l);
 int				path_init(t_lm *lm);
 void			resolve(t_lm *lm);
