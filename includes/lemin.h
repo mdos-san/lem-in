@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/20 14:07:30 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/20 14:46:27 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ typedef struct	s_lm
 	int			s_given;
 	int			e_given;
 	t_room		*r_end;
+	int			lem;
+	int			turn;
+	int			depth;
+	int			resolve_path;
+	int			end;
+	int			nend;
 }				t_lm;
 
 t_lm			lm_get();
