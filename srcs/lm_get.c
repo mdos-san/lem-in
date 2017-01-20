@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:43:00 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/07 17:52:25 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/20 13:49:10 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,11 @@ static void		get_link(t_lm *lm, char *str)
 				ft_strdel(&gnl_buf);
 				ft_strdel(&r1);
 				ft_strdel(&r2);
+			}
+			else if (gnl_buf[0] == '#')
+			{
+				lm->input = ft_strjoin(lm->input, gnl_buf);
+				lm->input = ft_strjoin(lm->input, "\n");
 			}
 		}
 	}
