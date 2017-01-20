@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/20 14:55:16 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/20 14:57:14 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct	s_lm
 t_lm			lm_get();
 void			lm_start(t_lm *lm);
 char			*ft_strdup_to_char(char *str, char c);
-int				ft_lstcount(t_list *l);
 int				path_init(t_lm *lm);
 void			resolve(t_lm *lm);
 void			get_link(t_lm *lm, char *str);

@@ -6,7 +6,7 @@
 #    By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/22 09:05:22 by mdos-san          #+#    #+#              #
-#    Updated: 2017/01/20 14:55:02 by mdos-san         ###   ########.fr        #
+#    Updated: 2017/01/20 14:57:01 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ L		=	-L./libs -lftprintf
 S_C		=	main.c\
 			lm_get.c\
 			lm_start.c\
-			ft_lstcount.c\
 			ft_strdup_to_char.c\
 			path_init.c\
 			map_get.c\
