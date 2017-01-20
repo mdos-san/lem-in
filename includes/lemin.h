@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2016/12/09 20:12:16 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/20 14:07:30 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,11 @@ void			ft_lstdetach_last(t_list *l);
 int				ft_lstcount(t_list *l);
 int				path_init(t_lm *lm);
 void			resolve(t_lm *lm);
+void			get_link(t_lm *lm, char *str);
+int				good_format(char *str);
+t_room			*find_room(t_lm *lm, char *name);
+int				add_link(t_room *r1, t_room *r2);
+void			get_room(t_lm *lm);
+void			error(t_lm *lm);
 
 #endif

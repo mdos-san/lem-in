@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:57:42 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/07 17:59:11 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/20 14:37:19 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,6 @@ t_list			*ft_lstdup(t_list *l)
 	return (ret);
 }
 
-int				ft_abs(int n)
-{
-	return ((n > 0) ? n : -1);
-}
-
 void			lm_start(t_lm *lm)
 {
 	t_list	*l;
@@ -100,10 +95,7 @@ void			lm_start(t_lm *lm)
 	lm->r_end = (t_room*)l->content;
 	lm->nb_path = path_init(lm);
 	if (lm->nb_path == 0)
-	{
-		ft_printf("ERROR\n");
-		exit(0);
-	}
+		error(lm);
 	(lm->debug) ? debug(lm) : 0;
 	lm->r_end->p = 1;
 	lm->r_end->w = -1;
