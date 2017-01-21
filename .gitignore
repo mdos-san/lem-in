@@ -1,0 +1,6 @@
+*.swp
+*.o
+lem-in
+includes/libft.h
+includes/libftprintf.h
+libs
