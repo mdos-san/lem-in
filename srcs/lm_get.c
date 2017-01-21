@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:43:00 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/20 14:27:45 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/21 16:58:03 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int		add_link(t_room *r1, t_room *r2)
 {
 	if (!r1 || !r2)
 		return (0);
-	(r1->link) ? ft_lstpushb(r1->link, &r2, sizeof(t_room*))
-		: (r1->link = ft_lstnew(&r2, sizeof(t_room*)));
-	(r2->link) ? ft_lstpushb(r2->link, &r1, sizeof(t_room*))
-		: (r2->link = ft_lstnew(&r1, sizeof(t_room*)));
+	(r1->link) ? ft_lstpushb(r1->link, &r2, sizeof(t_room *))
+		: (r1->link = ft_lstnew(&r2, sizeof(t_room *)));
+	(r2->link) ? ft_lstpushb(r2->link, &r1, sizeof(t_room *))
+		: (r2->link = ft_lstnew(&r1, sizeof(t_room *)));
 	return (1);
 }
 
@@ -73,6 +73,7 @@ t_lm	lm_get(void)
 	get_next_line(0, &array);
 	new.input = ft_strjoin(array, "\n");
 	new.nb_ant = ft_atoi(array);
+	ft_strdel(&array);
 	if (new.nb_ant <= 0)
 		error(&new);
 	get_room(&new);

@@ -6,14 +6,14 @@
 #    By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/22 09:05:22 by mdos-san          #+#    #+#              #
-#    Updated: 2017/01/20 14:57:01 by mdos-san         ###   ########.fr        #
+#    Updated: 2017/01/21 17:07:09 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	lem-in
 
 CC		=	gcc
-F		=	-Werror -Wall -Wextra
+F		=	-g -Werror -Wall -Wextra
 I		=	-I./includes
 L		=	-L./libs -lftprintf
 

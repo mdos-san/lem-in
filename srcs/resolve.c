@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 17:54:46 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/20 14:49:07 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/21 16:31:59 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ static char	*get_room_of_path(t_room *ro, int p, int nb, int *end)
 	if (ro->type == 2)
 		++*end;
 	if (nb == 0 || ro->type == 2)
-	{
 		return (ro->name);
-	}
 	while (c)
 	{
 		r = *(t_room**)c->content;

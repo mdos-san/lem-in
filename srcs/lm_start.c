@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:57:42 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/20 14:37:19 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/21 16:51:58 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void		debug(t_lm *lm)
 	{
 		r = (t_room*)(l->content);
 		ft_printf("\n###|room: %s\n", (r->input));
+		ft_printf("-----addr: %p\n", (r));
 		ft_printf("-----name: %s\n", (r->name));
 		ft_printf("-----type: %d\n", (r->type));
 		ft_printf("-----weig: %d\n", (r->w));
@@ -73,20 +74,6 @@ static t_list	*get_start(t_list *rooms)
 	return (NULL);
 }
 
-t_list			*ft_lstdup(t_list *l)
-{
-	t_list	*ret;
-
-	ret = NULL;
-	while (l)
-	{
-		(ret) ? ft_lstpushb(ret, l->content, l->content_size)
-			: (ret = ft_lstnew(l->content, l->content_size));
-		l = l->next;
-	}
-	return (ret);
-}
-
 void			lm_start(t_lm *lm)
 {
 	t_list	*l;
@@ -103,5 +90,4 @@ void			lm_start(t_lm *lm)
 	lm->start = (t_room*)l->content;
 	ft_putendl(lm->input);
 	resolve(lm);
-	exit(0);
 }
