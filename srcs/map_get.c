@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 14:03:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/21 17:15:59 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/21 17:30:07 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	get_link_assign(t_lm *lm, char **gnl_buf, char **r1, char **r2)
 	*r2 = ft_strdup(ft_strchr(*gnl_buf, '-') + 1);
 	if (add_link(find_room(lm, *r1), find_room(lm, *r2)) == 0)
 		error(lm);
-	ft_strdel(gnl_buf);
 	ft_strdel(r1);
 	ft_strdel(r2);
 }
@@ -57,6 +56,7 @@ void		get_link(t_lm *lm, char *str)
 				map_add_input(lm, gnl_buf);
 			ft_strdel(&gnl_buf);
 		}
+		ft_strdel(&gnl_buf);
 	}
 	else
 		error(lm);
@@ -105,5 +105,6 @@ void		get_room(t_lm *lm)
 		ft_strdel(&array);
 	}
 	get_link(lm, array);
+	sleep(180);
 	ft_strdel(&array);
 }
