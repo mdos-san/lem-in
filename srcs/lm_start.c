@@ -6,41 +6,11 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:57:42 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/21 16:51:58 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/23 15:07:43 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-static void		debug(t_lm *lm)
-{
-	t_list	*l;
-	t_room	*r;
-	t_list	*l2;
-
-	l = lm->rooms;
-	ft_printf("Debug: true\n");
-	ft_printf("nb_ant: %d\n", lm->nb_ant);
-	while (l)
-	{
-		r = (t_room*)(l->content);
-		ft_printf("\n###|room: %s\n", (r->input));
-		ft_printf("-----addr: %p\n", (r));
-		ft_printf("-----name: %s\n", (r->name));
-		ft_printf("-----type: %d\n", (r->type));
-		ft_printf("-----weig: %d\n", (r->w));
-		ft_printf("-----path: %d\n", (r->p));
-		l2 = r->link;
-		while (l2)
-		{
-			r = *(t_room**)(l2->content);
-			ft_printf("Linked_to: %s\n", (r->name));
-			l2 = l2->next;
-		}
-		l = l->next;
-	}
-	ft_printf("%d path(s) finded !\n", lm->nb_path);
-}
 
 static t_list	*get_end(t_list *rooms)
 {
@@ -83,7 +53,6 @@ void			lm_start(t_lm *lm)
 	lm->nb_path = path_init(lm);
 	if (lm->nb_path == 0)
 		error(lm);
-	(lm->debug) ? debug(lm) : 0;
 	lm->r_end->p = 1;
 	lm->r_end->w = -1;
 	l = get_start(lm->rooms);

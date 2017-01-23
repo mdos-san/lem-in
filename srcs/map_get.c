@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 14:03:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/23 14:36:23 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/23 15:19:11 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void		get_link(t_lm *lm, char *str)
 	{
 		ft_strdel(&r1);
 		ft_strdel(&r2);
-		while (get_next_line(0, &gnl_buf) > 0 && ft_strcmp(gnl_buf, "") != 0)
+		while (get_next_line(0, &gnl_buf) > 0
+			&& ft_strcmp(gnl_buf, "") != 0
+			&& (ft_strchr(gnl_buf, '-') != 0 || gnl_buf[0] == '#'))
 		{
 			if (gnl_buf[0] != '#')
 				get_link_assign(lm, &gnl_buf, &r1, &r2);
@@ -65,8 +67,6 @@ void		get_link(t_lm *lm, char *str)
 
 static int	get_room_assign(t_lm *lm, char **array, char *next_type)
 {
-	t_room	r;
-
 	map_add_input(lm, *array);
 	(ft_strcmp(*array, "##start") == 0) ? (*next_type = 1) : 0;
 	(ft_strcmp(*array, "##end") == 0) ? (*next_type = 2) : 0;
@@ -76,14 +76,7 @@ static int	get_room_assign(t_lm *lm, char **array, char *next_type)
 	(ft_strcmp(*array, "##end") == 0) ? (++lm->e_given) : 0;
 	if (good_format(*array))
 	{
-		r.input = ft_strdup(*array);
-		r.name = ft_strdup_to_char(*array, ' ');
-		r.type = *next_type;
-		r.w = -1;
-		r.p = -1;
-		r.link = NULL;
-		(lm->rooms == NULL) ? (lm->rooms = ft_lstnew(&r, sizeof(t_room)))
-			: ft_lstpushb(lm->rooms, &r, sizeof(t_room));
+		new_room(lm, *array, *next_type);
 		*next_type = 0;
 	}
 	else if ((*array)[0] != '#')
@@ -107,6 +100,8 @@ void		get_room(t_lm *lm)
 			break ;
 		ft_strdel(&array);
 	}
+	if (!lm->s_given || !lm->e_given)
+		error(lm);
 	get_link(lm, array);
 	ft_strdel(&array);
 }

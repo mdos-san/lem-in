@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/20 14:57:14 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/23 15:06:25 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,7 @@ t_room			*find_room(t_lm *lm, char *name);
 int				add_link(t_room *r1, t_room *r2);
 void			get_room(t_lm *lm);
 void			error(t_lm *lm);
+int				room_check_name(t_lm *lm, char *str);
+void			new_room(t_lm *lm, char *array, char type);
 
 #endif

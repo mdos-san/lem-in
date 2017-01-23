@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:43:00 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/21 16:58:03 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/23 15:11:16 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		good_format(char *str)
 			++count;
 		++i;
 	}
-	if (count == 2)
+	if (count >= 2)
 		return (1);
 	else
 		return (0);
