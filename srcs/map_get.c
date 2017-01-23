@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 14:03:40 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/23 14:32:18 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/23 14:36:23 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void		get_room(t_lm *lm)
 	next_type = 0;
 	while (get_next_line(0, &array) > 0)
 	{
+		if (array[0] == 'L')
+			error(lm);
 		if (get_room_assign(lm, &array, &next_type))
 			break ;
 		ft_strdel(&array);
