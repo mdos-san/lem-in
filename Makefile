@@ -6,7 +6,7 @@
 #    By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/22 09:05:22 by mdos-san          #+#    #+#              #
-#    Updated: 2017/01/23 14:45:36 by mdos-san         ###   ########.fr        #
+#    Updated: 2017/01/23 15:43:08 by mdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ S_C		=	main.c\
 			map_get.c\
 			map_get_util.c\
 			room_check.c\
+			lm_free.c\
 			resolve.c
 
 S_O		=	$(S_C:%.c=%.o)

@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:05:32 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/23 15:06:25 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/23 15:47:20 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ typedef struct	s_lm
 	char		debug;
 	int			nb_ant;
 	t_list		*rooms;
-	t_list		*path;
 	int			path_length;
-	t_list		*path_tmp;
 	int			tmp_length;
 	char		*input;
 	int			nb_path;
@@ -84,5 +82,6 @@ void			get_room(t_lm *lm);
 void			error(t_lm *lm);
 int				room_check_name(t_lm *lm, char *str);
 void			new_room(t_lm *lm, char *array, char type);
+void			lm_free(t_lm *lm);
 
 #endif

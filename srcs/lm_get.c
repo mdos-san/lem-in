@@ -6,7 +6,7 @@
 /*   By: mdos-san <mdos-san@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 09:43:00 by mdos-san          #+#    #+#             */
-/*   Updated: 2017/01/23 15:11:16 by mdos-san         ###   ########.fr       */
+/*   Updated: 2017/01/23 15:48:13 by mdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ t_lm	lm_get(void)
 	char	*array;
 
 	new.debug = 0;
-	new.path = NULL;
-	new.path_tmp = NULL;
 	new.path_length = 0;
 	new.tmp_length = 0;
 	new.s_given = 0;
